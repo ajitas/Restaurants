@@ -1,0 +1,34 @@
+<form>
+    <input type="text" id="restaurant-name">
+    <button id="submit-restaurant">Add</button>
+</form>
+
+<h2>Unvisited Restaurants</h2>
+
+  {{#each restaurants}}
+    {{#unless visited}}
+      {{> restaurants/unvisited-block}}
+    {{/unless}}
+  {{/each}}
+
+
+<h2>Liked Restaurants!</h2>
+
+  {{#each restaurants}}
+    {{#if visited}}
+        {{#if liked}}
+            {{> restaurants/liked-block}}
+        {{/if}}
+    {{/if}}
+  {{/each}}
+
+
+<h2>Disliked Restaurants!</h2>
+
+  {{#each restaurants}}
+    {{#if visited}}
+        {{#unless liked}}
+            {{> restaurants/disliked-block}}
+        {{/unless}}
+    {{/if}}
+  {{/each}}
