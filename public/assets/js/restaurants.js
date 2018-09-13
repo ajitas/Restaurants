@@ -50,7 +50,8 @@ $(function() {
       );
     });
 
-    $("#submit-restaurant").on("click",function(){
+    $("#submit-restaurant").on("click",function(event){
+        event.preventDefault();
         var name = $("#restaurant-name").val().trim();
 
         $.ajax("/api/restaurants", {

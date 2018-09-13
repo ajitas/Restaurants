@@ -9,3 +9,5 @@ CREATE TABLE restaurants(
     liked BOOLEAN DEFAULT false,
     PRIMARY KEY(id)
 );
+
+

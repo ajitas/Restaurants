@@ -1,34 +1,44 @@
-<form>
-    <input type="text" id="restaurant-name">
-    <button id="submit-restaurant">Add</button>
-</form>
+<div class="row text-center" id="add-restaurant">
+  <div class="col-md-12">
+    <h2>Add a restaurant</h2><br>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" id="restaurant-name" placeholder="Enter Restaurant's Name">
+      </div>
+      <button type="submit" id="submit-restaurant" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 text-center" id="liked-restaurants">
+    <h2>Liked Restaurants!</h2>
+    {{#each restaurants}}
+      {{#if visited}}
+          {{#if liked}}
+              {{> restaurants/liked-block}}
+          {{/if}}
+      {{/if}}
+    {{/each}}
+  </div>
 
-<h2>Unvisited Restaurants</h2>
-
-  {{#each restaurants}}
-    {{#unless visited}}
-      {{> restaurants/unvisited-block}}
-    {{/unless}}
-  {{/each}}
-
-
-<h2>Liked Restaurants!</h2>
-
-  {{#each restaurants}}
-    {{#if visited}}
-        {{#if liked}}
-            {{> restaurants/liked-block}}
-        {{/if}}
-    {{/if}}
-  {{/each}}
+  <div class="col-md-4 text-center" id="unvisited-restaurants">
+    <h2>Unvisited Restaurants</h2>
+    {{#each restaurants}}
+      {{#unless visited}}
+        {{> restaurants/unvisited-block}}
+      {{/unless}}
+    {{/each}}
+  </div>   
 
 
-<h2>Disliked Restaurants!</h2>
-
-  {{#each restaurants}}
-    {{#if visited}}
-        {{#unless liked}}
-            {{> restaurants/disliked-block}}
-        {{/unless}}
-    {{/if}}
-  {{/each}}
+  <div class="col-md-4 text-center" id="disliked-restaurants">
+    <h2>Disliked Restaurants!</h2>
+    {{#each restaurants}}
+      {{#if visited}}
+          {{#unless liked}}
+              {{> restaurants/disliked-block}}
+          {{/unless}}
+      {{/if}}
+    {{/each}}
+  </div>
+</div>
