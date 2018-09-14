@@ -50,6 +50,7 @@ var orm = {
       cb(result);
     });
   },
+
   insertOne: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -57,7 +58,7 @@ var orm = {
     queryString += cols.toString();
     queryString += ") ";
     queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
+    queryString += printQuestionMarks(vals.length); //prints ?,?,? if vals.length=3
     queryString += ") ";
 
     console.log(queryString);
@@ -70,7 +71,8 @@ var orm = {
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
+
+  // An example of objColVals would be {visited: true, liked: true}
   updateOne: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
@@ -89,6 +91,7 @@ var orm = {
     });
   },
 
+  // An example of objColVals would be {id:3}
   deleteOne: function(table, objColVals, cb) {
     var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
@@ -105,5 +108,5 @@ var orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (restaurant.js).
 module.exports = orm;

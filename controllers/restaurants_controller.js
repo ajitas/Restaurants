@@ -6,16 +6,20 @@ var router = express.Router();
 var restaurant = require("../models/restaurant.js");
 
 // Create all our routes and set up logic within those routes where required.
+
+//root route, show each restaurant's information, calls model's .all()
 router.get("/", function(req, res) {
   restaurant.all(function(data) {
     var hbsObject = {
       restaurants: data
     };
     console.log(hbsObject);
+    //render index.handlebars
     res.render("index", hbsObject);
   });
 });
 
+//when post request comes from client, calls model's create()
 router.post("/api/restaurants", function(req, res) {
     restaurant.create([
     "name"
@@ -27,6 +31,7 @@ router.post("/api/restaurants", function(req, res) {
   });
 });
 
+//when put request comes from client, calls model's update()
 router.put("/api/restaurants/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
@@ -45,6 +50,7 @@ router.put("/api/restaurants/:id", function(req, res) {
   });
 });
 
+//when delete request comes from client, calls model's delete()
 router.delete("/api/restaurants/:id", function(req, res) {
 
     restaurant.delete(

@@ -2,9 +2,10 @@
 var mysql = require("mysql");
 
 var connection;
+//If deployed
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
+} else { //If running on localhost
     connection = mysql.createConnection({
       host: "localhost",
       port: 3306,
