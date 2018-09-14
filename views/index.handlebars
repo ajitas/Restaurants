@@ -1,44 +1,59 @@
-<div class="row text-center" id="add-restaurant">
-  <div class="col-md-12">
-    <h2>Add a restaurant</h2><br>
-    <form>
-      <div class="form-group">
-        <input type="text" class="form-control" id="restaurant-name" placeholder="Enter Restaurant's Name">
-      </div>
-      <button type="submit" id="submit-restaurant" class="btn btn-primary">Submit</button>
-    </form>
+<div class="container">
+  <div class="row header">
+    <div class="col-md-12">
+      Festaurants
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-4 text-center" id="liked-restaurants">
-    <h2>Liked Restaurants!</h2>
-    {{#each restaurants}}
-      {{#if visited}}
-          {{#if liked}}
-              {{> restaurants/liked-block}}
+  <div class="row text-center" id="add-restaurant">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center">
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" id="restaurant-name" placeholder="Add New Restaurant">
+        </div>
+        <button type="submit" id="submit-restaurant" class="btn">Add to your List</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-11 text-center card card-restaurants" id="liked-restaurants">
+        <h1><i class="fa fa-thumbs-up"></i></h1>
+        {{#each restaurants}}
+          {{#if visited}}
+              {{#if liked}}
+                  {{> restaurants/liked-block}}
+              {{/if}}
           {{/if}}
-      {{/if}}
-    {{/each}}
-  </div>
+        {{/each}}
+      </div>
+    </div>
 
-  <div class="col-md-4 text-center" id="unvisited-restaurants">
-    <h2>Unvisited Restaurants</h2>
-    {{#each restaurants}}
-      {{#unless visited}}
-        {{> restaurants/unvisited-block}}
-      {{/unless}}
-    {{/each}}
-  </div>   
-
-
-  <div class="col-md-4 text-center" id="disliked-restaurants">
-    <h2>Disliked Restaurants!</h2>
-    {{#each restaurants}}
-      {{#if visited}}
-          {{#unless liked}}
-              {{> restaurants/disliked-block}}
+    <div class="col-md-4">
+      <div class="col-md-11 text-center card card-restaurants" id="unvisited-restaurants">
+        <h2>Wanna Try</h2>
+        {{#each restaurants}}
+          {{#unless visited}}
+            {{> restaurants/unvisited-block}}
           {{/unless}}
-      {{/if}}
-    {{/each}}
+        {{/each}}
+      </div>
+    </div>   
+
+  
+    <div class="col-md-4">
+      <div class="col-md-11 text-center card card-restaurants" id="disliked-restaurants">
+        <h1><i class="fa fa-thumbs-down"></i></h1>
+        {{#each restaurants}}
+          {{#if visited}}
+              {{#unless liked}}
+                  {{> restaurants/disliked-block}}
+              {{/unless}}
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+
   </div>
 </div>
